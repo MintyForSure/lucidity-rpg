@@ -1,7 +1,8 @@
 extends NinePatchRect
 
 var windowState="busy"
-#signal continueText
+var textQueue=[]
+signal continueText
 
 func windowInit(length,width,centered=null,quickWindow=null):
 	set_size(Vector2(length,width))
@@ -16,8 +17,8 @@ func windowInit(length,width,centered=null,quickWindow=null):
 		$continueIcon.set_visible(false)
 func textWindow(text,whereTo=null,quickWindow=null,centered=null):
 	if quickWindow==true:
-		windowState="free"
 		$text.set_text(text)
+		windowState="free"
 	if centered==true:
 		$text.set_text("[center]"+text+"[/center]")
 	match windowState:
@@ -34,10 +35,18 @@ func textWindow(text,whereTo=null,quickWindow=null,centered=null):
 				#continueText.emit()
 				$%continueSFX.play()
 				flushText()
-				if whereTo=="actionPick":
-					$%commandAnims.play("appear")
-					$"..".uiState="actionPick"
+			if whereTo=="actionPick":
+				$%commandAnims.play("appear")
+				$"..".uiState="actionPick"
 func flushText():
 	$continueIcon.set_visible(false)
 	$text.set_text("")
 	print("#flushed")
+func queueText(text):
+	$continueIcon.set_visible(false)
+	#textQueue.append(text)
+	#print(textQueue)
+	$text.append_text(text)
+	$text/appearingText.play("start")
+	await $text/appearingText.animation_finished
+	$continueIcon.set_visible(true)

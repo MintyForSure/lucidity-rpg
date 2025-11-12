@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://gcpvga3fc32f"]
 
-[ext_resource type="Texture2D" uid="uid://cu3pgkrk24t3c" path="res://assets/gfx/actors/battle/mare.png" id="1_g88pc"]
+[ext_resource type="PackedScene" uid="uid://dbwklsfd2l4ok" path="res://assets/3d/char/maremare.glb" id="1_q1k8k"]
 [ext_resource type="Texture2D" uid="uid://cb2x3fg5h1bi1" path="res://assets/gfx/speck.png" id="2_aa70j"]
 [ext_resource type="Script" uid="uid://c140gsiyl22ry" path="res://assets/scripts/behaviors.gd" id="2_g88pc"]
 
-[sub_resource type="Animation" id="Animation_si8du"]
+[sub_resource type="Animation" id="Animation_hr4up"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,49 +21,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0.4118977, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_fyqae"]
+[sub_resource type="Animation" id="Animation_0kgcb"]
 resource_name = "idle"
-length = 6.0
+length = 4.0
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3.37, 5.0333333),
-"transitions": PackedFloat32Array(1, -2, -2, -2),
+"times": PackedFloat32Array(0, 2.15),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.44156832, 0), Vector3(0.3926991, -0.027925268, 0), Vector3(0, 0.43633232, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.88),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0.25, 1.7, 3.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.11172795, 0)]
+"values": [Vector3(0, 0.4118977, 0), Vector3(0, -0.1675516, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gsr31"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idtn0"]
 _data = {
-&"RESET": SubResource("Animation_si8du"),
-&"idle": SubResource("Animation_fyqae")
+&"RESET": SubResource("Animation_hr4up"),
+&"idle": SubResource("Animation_0kgcb")
 }
 
 [sub_resource type="Animation" id="Animation_q1k8k"]
@@ -93,9 +94,9 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0kgcb"]
+[sub_resource type="Animation" id="Animation_gtiqd"]
 resource_name = "action"
-length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -103,10 +104,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_0xv2s"]
@@ -128,33 +129,32 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0xv2s"]
 _data = {
 &"RESET": SubResource("Animation_q1k8k"),
-&"action": SubResource("Animation_0kgcb"),
+&"action": SubResource("Animation_gtiqd"),
 &"spinHurt": SubResource("Animation_0xv2s")
 }
 
 [node name="maremare" type="Node3D"]
 
-[node name="maremare" type="Sprite3D" parent="."]
-cast_shadow = 0
-texture_filter = 0
-texture = ExtResource("1_g88pc")
+[node name="maremare" parent="." instance=ExtResource("1_q1k8k")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("2_g88pc")
 
 [node name="mareAnims" type="AnimationPlayer" parent="maremare"]
 libraries = {
-&"": SubResource("AnimationLibrary_gsr31")
-}
-
-[node name="standardEnemyAnims" type="AnimationPlayer" parent="maremare"]
-libraries = {
-&"": SubResource("AnimationLibrary_0xv2s")
+&"": SubResource("AnimationLibrary_idtn0")
 }
 
 [node name="shadow" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.356, 0)
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, 0, 0, 0)
 modulate = Color(0, 0, 0, 0.66300005)
 texture_filter = 0
 texture = ExtResource("2_aa70j")
 
 [node name="enemyCamPos" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.554)
+
+[node name="standardEnemyAnims" type="AnimationPlayer" parent="."]
+root_node = NodePath("../maremare")
+libraries = {
+&"": SubResource("AnimationLibrary_0xv2s")
+}

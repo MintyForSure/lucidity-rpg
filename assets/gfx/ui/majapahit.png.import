@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfixd40uuugnd"
-path="res://.godot/imported/window.png-b8fd11e5a753fc2785f23afa5b019e82.ctex"
+uid="uid://co4l4fmuylwj5"
+path="res://.godot/imported/majapahit.png-25339fe90585f3768ff98ab8dc189611.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/ui/window.png"
-dest_files=["res://.godot/imported/window.png-b8fd11e5a753fc2785f23afa5b019e82.ctex"]
+source_file="res://assets/gfx/ui/majapahit.png"
+dest_files=["res://.godot/imported/majapahit.png-25339fe90585f3768ff98ab8dc189611.ctex"]
 
 [params]
 

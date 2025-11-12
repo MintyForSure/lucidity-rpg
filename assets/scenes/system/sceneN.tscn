@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgrtctc6gm8sq"]
+[gd_scene load_steps=17 format=3 uid="uid://cgrtctc6gm8sq"]
 
 [ext_resource type="Shader" uid="uid://bfkloh0803rn8" path="res://assets/scripts/shaders/sceneN.gdshader" id="1_qnovi"]
 [ext_resource type="Texture2D" uid="uid://dwtm8vm1h6pqd" path="res://assets/gfx/pulse.png" id="2_ucekx"]
@@ -16,15 +16,28 @@ shader_parameter/movement_scale = 1.0000000475
 shader_parameter/color_1 = Color(0.26, 0.026000006, 0.15469994, 1)
 shader_parameter/color_2 = Color(0.07058824, 0.039215688, 0.06666667, 1)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qnovi"]
+sky_top_color = Color(0.39046153, 0.41043326, 0.72325516, 1)
+sky_horizon_color = Color(2.3102762e-06, 0.7099528, 0.9657342, 1)
+sky_curve = 0.18467192
+ground_bottom_color = Color(1, 0.41000003, 0.41000003, 1)
+ground_horizon_color = Color(0.68716127, 0.08557903, 0.3173317, 1)
+
+[sub_resource type="Sky" id="Sky_ucekx"]
+sky_material = SubResource("ProceduralSkyMaterial_qnovi")
+
 [sub_resource type="Environment" id="Environment_4q7kf"]
 background_mode = 3
+sky = SubResource("Sky_ucekx")
 ambient_light_source = 3
-ambient_light_color = Color(0.48, 0.48, 0.48, 1)
-ambient_light_energy = 11.15
-reflected_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 1.5
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.0
+glow_strength = 1.5
 glow_bloom = 1.0
 glow_hdr_threshold = 0.0
-fog_enabled = true
 
 [sub_resource type="Animation" id="Animation_0iyqg"]
 length = 0.001
@@ -107,9 +120,10 @@ tween_resource = SubResource("Resource_fyqae")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21798015, 0.24438977)
 
 [node name="maremare A" parent="enemies" instance=ExtResource("8_7f2a6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -1.31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -1.31)
 
 [node name="maremare B" parent="enemies" instance=ExtResource("8_7f2a6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -1.31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -1.31)

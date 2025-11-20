@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="wontexist"
+config/name="Lucidity"
+config/description="where are you even seeing this lol"
 run/main_scene="uid://cgrtctc6gm8sq"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
-config/icon="uid://cu3pgkrk24t3c"
+boot_splash/image="uid://c2byu05vhfl22"
+config/icon="uid://dholwub3mexkw"
 
 [autoload]
 

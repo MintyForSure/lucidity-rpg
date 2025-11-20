@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c11pt42mf4oew"]
+[gd_scene load_steps=5 format=3 uid="uid://c11pt42mf4oew"]
 
 [ext_resource type="Script" uid="uid://b3ck3sfdsubps" path="res://assets/scripts/character.gd" id="1_5r211"]
 [ext_resource type="Texture2D" uid="uid://cb5qv4ofhab3g" path="res://assets/gfx/cursor.png" id="2_oxe2d"]
+[ext_resource type="PackedScene" uid="uid://dklbqle7waw1n" path="res://assets/scenes/system/window2.tscn" id="3_cd3gb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxe2d"]
 size = Vector3(0.4716797, 0.9765625, 0.5839844)
@@ -50,3 +51,9 @@ grow_vertical = 2
 texture = ExtResource("2_oxe2d")
 expand_mode = 2
 stretch_mode = 3
+
+[node name="dialogueWindow" parent="camera3d/subViewportContainer/subViewport" instance=ExtResource("3_cd3gb")]
+offset_left = -64.0
+offset_top = 400.0
+offset_right = 576.0
+offset_bottom = 496.0

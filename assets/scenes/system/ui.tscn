@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cp26xup8rvuju"]
+[gd_scene load_steps=26 format=3 uid="uid://cp26xup8rvuju"]
 
-[ext_resource type="Texture2D" uid="uid://d1n5wjgmn3fvk" path="res://assets/gfx/ui/barBottom.png" id="1_n5ude"]
 [ext_resource type="Script" uid="uid://d1ho48tvx4ahb" path="res://assets/scripts/sub_viewport_container.gd" id="1_y4yjw"]
-[ext_resource type="Texture2D" uid="uid://cokilw6ddgylg" path="res://assets/gfx/ui/barTop.png" id="2_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://cpmrsl46ohskt" path="res://assets/gfx/ui/border.png" id="3_kbxjw"]
 [ext_resource type="Texture2D" uid="uid://qu0iy0bc6db6" path="res://assets/gfx/ui/status.png" id="3_waa4j"]
 [ext_resource type="Texture2D" uid="uid://7spguahkvwdh" path="res://assets/gfx/ui/bar.png" id="4_ok7cu"]
 [ext_resource type="Texture2D" uid="uid://b38lrsybnmtol" path="res://assets/gfx/ui/barHP.png" id="5_e2l4f"]
@@ -15,6 +14,82 @@
 [sub_resource type="Theme" id="Theme_e2l4f"]
 default_font = ExtResource("5_irxef")
 default_font_size = 10
+
+[sub_resource type="Animation" id="Animation_wv117"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kbxjw"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-128, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4lxi"]
+_data = {
+&"RESET": SubResource("Animation_wv117"),
+&"new_animation": SubResource("Animation_kbxjw")
+}
+
+[sub_resource type="Animation" id="Animation_1r4pt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barTop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_l4lxi"]
+resource_name = "fuckyoufuckyoufuckyou"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barTop2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(-128, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s65dr"]
+_data = {
+&"RESET": SubResource("Animation_1r4pt"),
+&"fuckyoufuckyoufuckyou": SubResource("Animation_l4lxi")
+}
 
 [sub_resource type="Animation" id="Animation_e2l4f"]
 length = 0.001
@@ -92,7 +167,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(0, 128), Vector2(0, 0)]
+"values": [Vector2(-16, 128), Vector2(-16, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_irxef"]
@@ -325,19 +400,37 @@ offset_bottom = 40.0
 theme = SubResource("Theme_e2l4f")
 script = ExtResource("1_y4yjw")
 
+[node name="animationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l4lxi")
+}
+autoplay = "new_animation"
+
+[node name="animationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s65dr")
+}
+autoplay = "fuckyoufuckyoufuckyou"
+
 [node name="barTop" type="TextureRect" parent="."]
 layout_mode = 0
+offset_left = -128.0
 offset_right = 640.0
-offset_bottom = 480.0
-texture = ExtResource("1_n5ude")
-metadata/_edit_lock_ = true
+offset_bottom = 64.0
+texture = ExtResource("3_kbxjw")
+stretch_mode = 1
+flip_v = true
 
-[node name="barBottom" type="TextureRect" parent="."]
+[node name="barTop2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.54509807)
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 480.0
-texture = ExtResource("2_y4yjw")
-metadata/_edit_lock_ = true
+offset_top = 32.0
+offset_right = 768.0
+offset_bottom = 96.0
+texture = ExtResource("3_kbxjw")
+stretch_mode = 1
+flip_h = true
+flip_v = true
 
 [node name="status" type="TextureRect" parent="."]
 layout_mode = 0
@@ -400,12 +493,12 @@ text = "HP"
 [node name="tp" type="Label" parent="status"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 384.0
+offset_top = 386.0
 offset_right = 48.0
-offset_bottom = 416.0
+offset_bottom = 418.0
 theme_override_fonts/font = ExtResource("8_wv117")
 theme_override_font_sizes/font_size = 32
-text = "TP"
+text = "DP"
 
 [node name="commands" type="Node2D" parent="status"]
 position = Vector2(0, 128)
@@ -446,6 +539,7 @@ libraries = {
 
 [node name="selectSFX" type="AudioStreamPlayer" parent="status/commands"]
 stream = ExtResource("10_e2l4f")
+volume_db = -80.0
 
 [node name="partyStatus" type="HBoxContainer" parent="status"]
 visible = false
@@ -468,18 +562,25 @@ text = "fsafgasg"
 [node name="window" parent="." instance=ExtResource("10_irxef")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 64.0
-offset_top = 24.0
-offset_right = 576.0
-offset_bottom = 104.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 544.0
+offset_bottom = 96.0
 
 [node name="enemyWindow" parent="." instance=ExtResource("10_irxef")]
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_top = -96.0
-offset_bottom = -8.0
+offset_right = 32.0
+offset_bottom = -64.0
 
 [node name="windowPos" type="Marker2D" parent="."]
-position = Vector2(64, 24)
+position = Vector2(96, 32)
 
 [node name="enemyNamePos" type="Marker2D" parent="windowPos"]
 position = Vector2(192, 72)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://gcpvga3fc32f"]
 
-[ext_resource type="PackedScene" uid="uid://dbwklsfd2l4ok" path="res://assets/3d/char/maremare.glb" id="1_q1k8k"]
+[ext_resource type="PackedScene" uid="uid://di8ddcfcnhfo6" path="res://assets/3d/char/maremare.glb" id="1_q1k8k"]
 [ext_resource type="Texture2D" uid="uid://cb2x3fg5h1bi1" path="res://assets/gfx/speck.png" id="2_aa70j"]
 [ext_resource type="Script" uid="uid://c140gsiyl22ry" path="res://assets/scripts/behaviors.gd" id="2_g88pc"]
 

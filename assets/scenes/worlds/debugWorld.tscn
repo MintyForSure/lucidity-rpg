@@ -1,20 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl86vnvy1nhuc"]
+[gd_scene load_steps=9 format=3 uid="uid://dl86vnvy1nhuc"]
 
 [ext_resource type="PackedScene" uid="uid://c11pt42mf4oew" path="res://assets/scenes/system/character.tscn" id="1_04nc4"]
 [ext_resource type="Texture2D" uid="uid://dwtm8vm1h6pqd" path="res://assets/gfx/pulse.png" id="2_clcov"]
 [ext_resource type="MeshLibrary" uid="uid://cvbdnd83cfbs0" path="res://assets/scenes/tileData/export/testTiles.tres" id="3_baqc5"]
-[ext_resource type="Texture2D" uid="uid://r2wvj4u0kydx" path="res://assets/gfx/space.png" id="4_va7e1"]
-[ext_resource type="PackedScene" uid="uid://06sjdfaoiwvt" path="res://assets/scenes/system/window.tscn" id="5_6wewy"]
 [ext_resource type="PackedScene" uid="uid://bkj50l0632rqb" path="res://assets/scenes/enemies/overworld/maremareOverworld.tscn" id="6_sy8se"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_nipg5"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6wewy"]
-panorama = ExtResource("4_va7e1")
-filter = false
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6wewy"]
+sky_top_color = Color(0.3372549, 0.3137255, 0.38431373, 1)
+ground_bottom_color = Color(0.3137255, 0.2901961, 0.36078432, 1)
 
 [sub_resource type="Sky" id="Sky_va7e1"]
-sky_material = SubResource("PanoramaSkyMaterial_6wewy")
+sky_material = SubResource("ProceduralSkyMaterial_6wewy")
 
 [sub_resource type="Environment" id="Environment_baqc5"]
 background_mode = 2
@@ -54,7 +52,5 @@ data = {
 [node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_baqc5")
 
-[node name="window" parent="." instance=ExtResource("5_6wewy")]
-
 [node name="maremareOverworld" parent="." instance=ExtResource("6_sy8se")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.747221, -2.5402467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4733784, -2.5402467)

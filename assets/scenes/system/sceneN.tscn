@@ -1,20 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgrtctc6gm8sq"]
+[gd_scene load_steps=14 format=3 uid="uid://cgrtctc6gm8sq"]
 
-[ext_resource type="Shader" uid="uid://bfkloh0803rn8" path="res://assets/scripts/shaders/sceneN.gdshader" id="1_qnovi"]
-[ext_resource type="Texture2D" uid="uid://dwtm8vm1h6pqd" path="res://assets/gfx/pulse.png" id="2_ucekx"]
 [ext_resource type="PackedScene" uid="uid://cp26xup8rvuju" path="res://assets/scenes/system/ui.tscn" id="3_uj0c4"]
 [ext_resource type="Script" uid="uid://ch3aypeyq8wu6" path="res://assets/scripts/battleCam.gd" id="4_sagyc"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_atdwn"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_7pqw8"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_68v3o"]
 [ext_resource type="PackedScene" uid="uid://gcpvga3fc32f" path="res://assets/scenes/enemies/maremare.tscn" id="8_7f2a6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngj8e"]
-shader = ExtResource("1_qnovi")
-shader_parameter/movement_speed = 0.10000000475
-shader_parameter/movement_scale = 1.0000000475
-shader_parameter/color_1 = Color(0.26, 0.026000006, 0.15469994, 1)
-shader_parameter/color_2 = Color(0.07058824, 0.039215688, 0.06666667, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qnovi"]
 sky_top_color = Color(0.39046153, 0.41043326, 0.72325516, 1)
@@ -82,13 +73,8 @@ script = ExtResource("7_68v3o")
 
 [node name="scene" type="Node3D"]
 
-[node name="bg" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ngj8e")
-position = Vector2(320, 239.99998)
-scale = Vector2(4.923077, 3.6923077)
-texture = ExtResource("2_ucekx")
-
 [node name="battleUI" parent="." instance=ExtResource("3_uj0c4")]
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4q7kf")

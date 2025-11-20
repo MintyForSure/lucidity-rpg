@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2mfitva48btq"
+uid="uid://t0ao18dgwp42"
 path.s3tc="res://.godot/imported/maremare_Image_0.png-a6463430226366b60a2bd7a2610571d8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "c054104b22685196075c09b2868b935a"
 }
 
 [deps]

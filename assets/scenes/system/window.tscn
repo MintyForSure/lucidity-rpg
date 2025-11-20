@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://ditffwdpwhqsc" path="res://assets/scenes/system/window.tres" id="1_7ma78"]
 [ext_resource type="Texture2D" uid="uid://dfixd40uuugnd" path="res://assets/gfx/ui/window.png" id="1_ywt05"]
-[ext_resource type="Texture2D" uid="uid://caywscxjxtuhn" path="res://assets/gfx/Sprite-0003.png" id="2_1lium"]
+[ext_resource type="Texture2D" uid="uid://caywscxjxtuhn" path="res://assets/gfx/contArrow.png" id="2_1lium"]
 [ext_resource type="Script" uid="uid://ddq4cuxf30f0q" path="res://assets/scenes/system/windowSys.gd" id="3_m08t8"]
 [ext_resource type="AudioStream" uid="uid://b3lyujqk4ojcd" path="res://assets/snd/select.wav" id="5_m08t8"]
 
@@ -71,6 +71,7 @@ anchors_preset = -1
 anchor_right = 0.6
 anchor_bottom = 0.18300001
 offset_bottom = 0.15999603
+size_flags_horizontal = 4
 theme = ExtResource("1_7ma78")
 texture = ExtResource("1_ywt05")
 patch_margin_left = 16
@@ -80,12 +81,18 @@ patch_margin_bottom = 16
 script = ExtResource("3_m08t8")
 
 [node name="text" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 10.0
-offset_right = 360.0
-offset_bottom = 78.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_7ma78")
+bbcode_enabled = true
 text = "The fast brown fox jumps over the lazy dog."
 scroll_active = false
 scroll_following = true
@@ -103,6 +110,7 @@ frame_progress = 0.37914342
 [node name="continueSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_m08t8")
+volume_db = -80.0
 
 [node name="animationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

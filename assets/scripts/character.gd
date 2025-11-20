@@ -32,6 +32,8 @@ func _physics_process(delta: float) -> void:
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 
 			move_and_slide()
+		"battle":
+			pass
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

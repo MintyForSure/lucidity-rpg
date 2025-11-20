@@ -7,3 +7,4 @@ If this repo stops being maintained then I may have switched directions (wink wi
 https://kenney.nl
 https://phantom-camera.dev/
 https://godotshaders.com/shader/abstract-3d/
+https://poppyworks.itch.io/silver CC 4.0

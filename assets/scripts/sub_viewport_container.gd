@@ -27,7 +27,7 @@ func _ready():
 	tensBar.value=0
 	tensText.text=str(tension)+"%"
 	$window.position=$windowPos.position
-	$window.windowInit(512.0, 80.0)
+	$window.windowInit(448.0, 48.0)
 	$enemyWindow.set_visible(false)
 	$enemyWindow.windowInit(256.0,48.0)
 	$enemyWindow.position=$windowPos/enemyNamePos.position
@@ -43,7 +43,7 @@ func _process(_delta):
 		"startWindow":
 			%pcam.look_at_mode=0
 			%pcam.set_look_at_target($"../enemies")
-			$window.queueText(battleJSON.maremareEncounter.text,"actionPick")
+			$window.queueText(battleJSON.maremareEncounter.text)
 		"actionPick":
 			if Input.is_action_just_pressed("up"):
 				$status/commands/selectSFX.play()
@@ -69,6 +69,7 @@ func _process(_delta):
 			%pcam.look_at_mode=2
 			$enemyWindow/text.set_text(str(enemyList[selectedEnemy]).get_slice(":",0))
 			%pcam.set_look_at_target(enemyList[selectedEnemy])
+			%pcam.set_look_at_offset(Vector3(0, 0.2, 0))
 			if Input.is_action_just_pressed("left"):
 				if selectedEnemy != 0:
 					selectedEnemy-=1
@@ -87,6 +88,7 @@ func _process(_delta):
 				$%commandAnims.play("appear")
 				#$"../pcam".look_at_mode=0
 				%pcam.set_look_at_target($"../lookie")
+				%pcam.set_look_at_offset(Vector3(0, 0, 0))
 				restoreMenuState()
 				#$window.flushText()
 				#$window.textWindow(battleJSON.maremareEncounter.text,"nowhere",true)
@@ -94,6 +96,7 @@ func _process(_delta):
 			elif Input.is_action_just_pressed("ui_select"):
 				$enemyWindow.set_visible(false)
 				%pcam.set_look_at_target($"../lookie")
+				%pcam.set_look_at_offset(Vector3(0, 0, 0))
 				action=["basicAttack",enemyList[selectedEnemy]]
 				restoreMenuState()
 				playerMove(action)

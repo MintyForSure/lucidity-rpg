@@ -44,6 +44,10 @@ func _process(_delta):
 			%pcam.look_at_mode=0
 			%pcam.set_look_at_target($"../enemies")
 			$window.queueText(battleJSON.maremareEncounter.text)
+			if Input.is_action_just_pressed("confirm"):
+				$%commandAnims.play("appear")
+				uiState="actionPick"
+				$window.set_visible(false)
 		"actionPick":
 			if Input.is_action_just_pressed("up"):
 				$status/commands/selectSFX.play()
@@ -94,6 +98,7 @@ func _process(_delta):
 				#$window.textWindow(battleJSON.maremareEncounter.text,"nowhere",true)
 				uiState="actionPick"
 			elif Input.is_action_just_pressed("ui_select"):
+				$window.set_visible(true)
 				$enemyWindow.set_visible(false)
 				%pcam.set_look_at_target($"../lookie")
 				%pcam.set_look_at_offset(Vector3(0, 0, 0))
